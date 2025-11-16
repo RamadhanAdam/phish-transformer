@@ -67,7 +67,7 @@ class MiniTransformer(nn.Module):
         x = self.embedding(x) + self.pos_enc  # (B,T,d)
         x = self.encoder(x)                   # (B,T,d)
         z = self.pool(x.transpose(1, 2)).squeeze(-1)  # (B,d)
-        return torch.sigmoid(self.fc(z)).squeeze(-1)   # (B,)
+        return 1 - torch.sigmoid(self.fc(z)).squeeze(-1)   # (B,) -> flipped to represent phishing probability well 
 
 
 if __name__ == "__main__":
