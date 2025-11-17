@@ -17,7 +17,7 @@
     if (data.phishing > 0.5) {
       const banner = document.createElement("div");
       banner.className = "phish-banner";
-      banner.textContent = "⚠️  AI detector: likely phishing site";
+      banner.textContent = "⚠️ ‼️ AI detector: likely phishing site";
 
       // Putting my banner at the top of the page
       document.body.prepend(banner);
