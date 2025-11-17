@@ -3,7 +3,6 @@
 # Adding project root to PYTHONPATH
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from tokenizer import url_to_ids
 
 import torch
 import pandas as pd
