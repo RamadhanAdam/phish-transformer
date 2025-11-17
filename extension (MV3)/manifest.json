@@ -1,0 +1,14 @@
+{
+  "name": "PhishGuard",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["banner.css"]
+    }
+  ]
+}

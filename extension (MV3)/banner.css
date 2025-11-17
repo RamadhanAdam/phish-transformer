@@ -1,0 +1,12 @@
+.phish-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #d32f2f;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  z-index: 9999;
+  font-family: sans-serif;
+}
