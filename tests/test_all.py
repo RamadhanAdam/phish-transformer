@@ -8,7 +8,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 import pytest
 import torch
 from src.data.tokenizer import url_to_ids, MAX_LEN
-from model.model import MiniTransformer
+from src.model.model import MiniTransformer
 
 def test_token_length():
     """Checking if the function truncates so that the returned 
