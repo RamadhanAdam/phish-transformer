@@ -1,4 +1,8 @@
 """Clean UCI dataset and create train/ val/ test splits."""
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 import pandas as pd
 import numpy as np

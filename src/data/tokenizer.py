@@ -1,3 +1,4 @@
+
 """Converting the URL string to fixed-length integer sequence"""
 
 from typing import List

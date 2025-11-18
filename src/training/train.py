@@ -1,10 +1,15 @@
-"""trining the mini-transformer on UCI URL data."""
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+"""training the mini-transformer on UCI URL data."""
 
 import torch 
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
 import pandas as pd
-from tokenizer import url_to_ids
+from data.tokenizer import url_to_ids
 from model.model import MiniTransformer
 
 
@@ -47,7 +52,7 @@ def train(model, train_loader, val_x, val_y, epochs: int = 5, lr: float = 3e-4):
             print(f"Epoch {epoch} : val-acc {acc:3f}")
             if acc > best_acc:
                 best_acc = acc
-                torch.save(model.state_dict(), "phish_model.pt")
+                torch.save(model.state_dict(), "./models/phish_model.pt")
 
     print("Saved best model to phish_model.pt")      
 

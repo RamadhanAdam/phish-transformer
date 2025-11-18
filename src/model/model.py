@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 # model.py
 """Minimal character-level transformer for binary classification."""
 import math

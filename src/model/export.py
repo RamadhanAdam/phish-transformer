@@ -16,8 +16,8 @@ from pathlib import Path
 import sys
 
 # Adding project root to Python path for importing modules
-project_root = Path(__file__).resolve().parent.parent
-sys.path.append(str(project_root))
+project_root = Path(__file__).resolve().parents[2]  # go up to project root
+sys.path.insert(0, str(project_root / "src"))
 
 from model.model import MiniTransformer
 
@@ -37,7 +37,7 @@ def export():
     model = MiniTransformer()
 
     # Loading trained weights
-    model_path = project_root / "phish_model.pt"
+    model_path = project_root / "models" / "phish_model.pt"
     if not model_path.exists():
         raise FileNotFoundError(f"Model file not found: {model_path}")
     model.load_state_dict(torch.load(model_path, map_location="cpu"))
@@ -50,7 +50,7 @@ def export():
         scripted = torch.jit.script(model)
 
     # Saving the TorchScript model
-    output_path = Path(__file__).resolve().parent / "phish_model_ts.pt"
+    output_path = project_root / "models" / "phish_model.pt"
     scripted.save(output_path)
 
     # Printing the model file size

@@ -1,8 +1,13 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 """Unit tests for tokenizer and model."""
 
 import pytest
 import torch
-from tokenizer import url_to_ids, MAX_LEN
+from src.data.tokenizer import url_to_ids, MAX_LEN
 from model.model import MiniTransformer
 
 def test_token_length():

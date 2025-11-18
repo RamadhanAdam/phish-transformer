@@ -21,14 +21,15 @@ import sys
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 import torch
 from flask import Flask, request, jsonify
-from tokenizer import url_to_ids
+from data.tokenizer import url_to_ids
 
 app = Flask(__name__)
 
 # Loading TorchScript Model and setting it to evaluation
-model = torch.jit.load("./checkpoint/phish_model_ts.pt")
+model = torch.jit.load("./models/phish_model_ts.pt")
 model.eval()
 
 @app.route("/predict", methods = ["POST"])

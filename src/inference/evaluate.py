@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 """Evaluating the model on test set"""
 
 # Adding project root to PYTHONPATH
@@ -8,9 +13,9 @@ import torch
 import pandas as pd
 import sklearn.metrics
 import matplotlib.pyplot as plt
-from tokenizer import url_to_ids
+from data.tokenizer import url_to_ids
 
-model = torch.jit.load("./checkpoint/phish_model_ts.pt")
+model = torch.jit.load("./models/phish_model_ts.pt")
 test_df = pd.read_csv("./datasets/test.csv")
 test_x = torch.tensor([url_to_ids(u) for u in test_df["URL"]], dtype = torch.long)
 
