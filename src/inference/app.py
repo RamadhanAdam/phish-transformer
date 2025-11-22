@@ -32,21 +32,90 @@ app = Flask(__name__)
 model = torch.jit.load("./models/phish_model_ts.pt")
 model.eval()
 
-@app.route("/", methods = ["GET"])
+@app.route("/", methods=["GET"])
 def home():
-    return (
-        "<h1>PhishGuard API</h1>"
-        "<p>POST <code>/predict</code> with JSON:</p>"
-        "<pre>{\"url\": \"https://example.com\"}</pre>"
-        "<hr>"
-        "<h2>Test quickly</h2>"
-        "<b>cURL:</b><br>"
-        "<pre>curl -X POST http://127.0.0.1:8000/predict -H \"Content-Type: application/json\" -d '{\"url\":\"https://paypal-secure-login.ru\"}'</pre>"
-        "<hr>"
-        "<b>Thunder Client (VS Code):</b><br>"
-        "Method: POST  URL: <code>http://127.0.0.1:8000/predict</code><br>"
-        "Body (JSON): <code>{\"url\": \"https://paypal-secure-login.ru\"}</code>"
-    ), 200
+    return """
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>PhishGuard API</title>
+
+<style>
+    body {
+        font-family: system-ui;
+        background: #f6f8fa;
+        margin: 2rem;
+        line-height: 1.6;
+    }
+    h1 { color: #d32f2f; }
+    pre {
+        background: #ebebeb;
+        padding: 1rem;
+        overflow-x: auto;
+        border-radius: 6px;
+        white-space: pre-wrap;
+    }
+    code {
+        background: #ebebeb;
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+    .step { margin: 1.2rem 0; }
+</style>
+
+<h1>PhishGuard API</h1>
+
+<p>
+    This server predicts how <em>phishy</em> a URL is.<br>
+    Send a POST request to <code>/predict</code> with JSON:
+</p>
+
+<pre>{"url": "https://example.com"}</pre>
+<p><i>Tip: Replace <code>https://example.com</code> with any URL you want to check.</i></p>
+
+<h2>❶ Test in CMD / Terminal (5 seconds)</h2>
+<div class="step">
+    <b>Copy → paste → Enter:</b>
+    <pre>
+curl -X POST http://127.0.0.1:8000/predict \
+     -H "Content-Type: application/json" \
+     -d "{\"url\": \"https://example.com\"}"
+    </pre>
+    <p><i>Replace the URL with the one you want to test.</i></p>
+</div>
+
+<h2>② GUI inside VS Code</h2>
+<div class="step">
+    <b>Using Thunder Client (free):</b><br>
+    1. Install "Thunder Client" from Extensions.<br>
+    2. New Request → POST<br>
+    3. URL: <code>http://127.0.0.1:8000/predict</code><br>
+    4. Body → Raw → JSON<br>
+    5. Paste:<br>
+    <code>{"url": "https://example.com"}</code><br>
+    6. Send.
+</div>
+
+<h2>③ Postman (any OS)</h2>
+<div class="step">
+    1. New Request → POST<br>
+    2. URL: <code>http://127.0.0.1:8000/predict</code><br>
+    3. Body → Raw → JSON<br>
+    4. Paste payload → Send.
+</div>
+
+<h2>What the number means</h2>
+<ul>
+    <li>0.0 – 0.5 → likely <strong>safe</strong></li>
+    <li>0.5 – 1.0 → likely <strong>phishing</strong></li>
+</ul>
+
+<p>That's it — happy testing!</p>
+
+</html>
+""", 200
 
 @app.route("/predict", methods = ["POST"])
 def predict():
