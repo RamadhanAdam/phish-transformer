@@ -1,14 +1,31 @@
 COMMERCIAL LICENSE – Phish-Transformer  
 Copyright © 2025 Ramadhan Adam (ramadhanzome4@gmail.com) – All Rights Reserved.
 
-You may **not** copy, modify, merge, publish, distribute, sublicense, sell, or commercially exploit this software, in whole or in part, **for commercial purposes**, without prior written permission from the copyright holder.
+1. Definitions  
+1.1 “Software” means the source code, model weights, data, and entire codebase of Phish-Transformer.  
+1.2 “Commercial Use” means any use of the Software in a product, service, or system that generates or is intended to generate revenue, or is used within a company or business context, regardless of distribution.  
+1.3 “Derivative Work” means any adaptation, model, service, or work derived from the Software — including but not limited to re-trained models, APIs, or hosted services.  
 
-**Non-commercial, personal, or educational use** is allowed **with attribution**:
-- You may study and experiment with the code.  
-- You may modify it for personal learning.  
-- You may **fork privately on GitHub** for personal use only.  
-- You must **not** redistribute modified or unmodified code publicly without written permission.
+2. Licence Grant & Restrictions  
+2.1 You may not copy, modify, merge, distribute, sublicense, sell, rent, lease, or commercially exploit the Software, or any Derivative Work, for Commercial Use, without prior written permission from the copyright holder.  
+2.2 Non-commercial, personal, academic, or educational use is permitted only with attribution and under these conditions:  
+  - You may study, run, and modify the Software for personal, academic, or non-profit use.  
+  - You may create private forks on GitHub for personal or internal evaluation.  
+  - You may not make Derivative Works public or distribute them (in source or binary form) without a separate licence.  
+2.3 You may not use the Software or its Derivative Works to train or generate models, data, or services, whether for private use, research, or commercial use, without separate written permission.  
+2.4 You may not operate the Software or any Derivative Work as a SaaS, API, or hosted service unless explicitly licensed by the Licensor.  
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+3. Attribution  
+3.1 Any permitted non-commercial use must include this notice:  
+    Phish-Transformer © 2025 Ramadhan Adam. Used under non-commercial licence.  
+3.2 You must retain all copyright, trademark, and attribution notices in any copy or Derivative Work.  
 
-For licensing enquiries: ramadhanzome4@gmail.com
+4. Warranty Disclaimer  
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.  
+
+5. Limitation of Liability  
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, ARISING FROM ANY USE OF THE SOFTWARE.  
+
+6. Enforcement & Contact  
+6.1 All rights not expressly granted are reserved by the copyright holder.  
+6.2 For commercial licensing enquiries: ramadhanzome4@gmail.com
