@@ -12,13 +12,13 @@ By installing, accessing, or using the Software, you agree to the terms of this 
 1.3 “Derivative Work” means any modification, retraining, hosted service, API, or other work based on or built from the Software.
 
 2. LICENSE GRANT & RESTRICTIONS  
-2.1 You may **not** copy, modify, merge, distribute, sublicense, sell, rent, lease, or commercially exploit the Software or any Derivative Work, for Commercial Use, without prior written permission from the Licensor.  
-2.2 Non-commercial, personal, academic, or educational use is permitted **only with attribution** and under these conditions:  
+2.1 You may not copy, modify, merge, distribute, sublicense, sell, rent, lease, or commercially exploit the Software or any Derivative Work, for Commercial Use, without prior written permission from the Licensor.  
+2.2 Non-commercial, personal, academic, or educational use is permitted only with attribution and under these conditions:  
     - You may run and modify the Software for your own learning and evaluation.  
-    - You may create **private forks** for personal or internal use only.  
-    - You may **not** distribute the Software or any Derivative Work publicly without a separate licence.  
-2.3 You may **not** use the Software, or any Derivative Work, to train or generate machine learning models, datasets, or services, whether for research or commercial purposes, without separate written permission.  
-2.4 You may **not** operate the Software or any Derivative Work as a SaaS, API, or hosted service unless explicitly licensed by the Licensor.
+    - You may create private forks for personal or internal use only.  
+    - You may not distribute the Software or any Derivative Work publicly without a separate licence.  
+2.3 You may not use the Software, or any Derivative Work, to train or generate machine learning models, datasets, or services, whether for research or commercial purposes, without separate written permission.  
+2.4 You may not operate the Software or any Derivative Work as a SaaS, API, or hosted service unless explicitly licensed by the Licensor.
 
 3. ATTRIBUTION  
 3.1 Any permitted non-commercial use must include this notice:  
@@ -26,7 +26,7 @@ By installing, accessing, or using the Software, you agree to the terms of this 
 3.2 You must retain all copyright, trademark, and attribution notices in any copy or Derivative Work.
 
 4. REVERSE ENGINEERING  
-You may **not** reverse engineer, decompile, disassemble, or attempt to derive the source code or underlying structure of the Software, except to the extent permitted by applicable law.
+You may not reverse engineer, decompile, disassemble, or attempt to derive the source code or underlying structure of the Software, except to the extent permitted by applicable law.
 
 5. TERMINATION  
 5.1 This Agreement terminates automatically if you breach any of its terms.  
