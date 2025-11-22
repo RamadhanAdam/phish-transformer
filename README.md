@@ -4,9 +4,11 @@ A lightweight, pure-CPU transformer that detects phishing URLs and warns users i
 [![Python](https://img.shields.io/badge/Python-3.8+-blue )](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange )](https://pytorch.org )  
 [![Flask](https://img.shields.io/badge/Flask-2.3+-green )](https://flask.palletsprojects.com )  
-[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green )](https://developer.chrome.com/docs/extensions/mv3/intro/ )
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green )](https://developer.chrome.com/docs/extensions/mv3/intro/)
+![Licence](https://img.shields.io/badge/licence-MIT-green)
 
 Tested on Python 3.10–3.13
+
 ---
 
 ## Contents
