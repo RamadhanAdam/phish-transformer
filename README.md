@@ -5,7 +5,7 @@ A lightweight, pure-CPU transformer that detects phishing URLs and warns users i
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange )](https://pytorch.org )  
 [![Flask](https://img.shields.io/badge/Flask-2.3+-green )](https://flask.palletsprojects.com )  
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green )](https://developer.chrome.com/docs/extensions/mv3/intro/)
-![Licence](https://img.shields.io/badge/licence-MIT-green)
+![Licence](https://img.shields.io/badge/licence-GPL--3.0-green)
 
 Tested on Python 3.10–3.13
 
@@ -26,12 +26,26 @@ Tested on Python 3.10–3.13
 
 ## What It Does
 
-1. Learns URL patterns from the [UCI PhisUSIIL Phishing URL Dataset](https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset ).
+1. Learns URL patterns from the [UCI PhisUSIIL Phishing URL Dataset](https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset).
 2. Tokenizes each URL into 75 ASCII characters.
 3. Feeds the sequence into a ~ 45k parameter transformer encoder
 4. Returns a probability via a Flask REST endpoint `/predict` .
 5. Displays a red banner in Chrome when the probability > 0.5.
 
+---
+
+## Limitations
+
+The model judges **only the URL string** (characters, sub-domains, TLD, etc.) and does **not** fetch or inspect page content.  
+It is designed as a **zero-latency first filter** against look-alike domains; content-based attacks require additional page-analysis layers.
+
+## Future Improvements
+
+- Integrate **content-based page analysis** to catch phishing beyond URL strings.  
+- Support **real-time updates** from threat feeds to improve detection of new domains.  
+- Extend multilingual support and handle **punycode / internationalized domains**.  
+- Explore **edge deployment optimizations** (INT8 quantization, 1-D CNN variant).  
+- Implement **user feedback loop** for continual model retraining.
 ---
 
 ## Folder Map
@@ -148,7 +162,7 @@ python src/inference/evaluate.py   # produces roc.png
 
 # Possible Extensions
 - Distil to 1-D CNN for < 200 kb edge deployment
-- Quantisation (INT8) for 2x speed-up
+- Quantization (INT8) for 2x speed-up
 - On device Chrome ML (TensorFlow-Lite)
 - Multilingual URL support (Unicode normalizer)
 - Continuous retraining with user feedback
@@ -161,6 +175,12 @@ python src/inference/evaluate.py   # produces roc.png
 4. Push & open pull requests
 
 ---
+## Acknowledgements
+- UCI PhisUSIIL Phishing URL Dataset
+- PyTorch, Flask, Chrome Extension APIs
 
-## License
-MIT License – see LICENSE file.
+---
+
+## Licence
+This project is licensed under the **GNU General Public Licence v3.0** – see [LICENSE](LICENSE) for details.  
+Commercial use is allowed **only** if you open-source your entire derivative under the same licence.
