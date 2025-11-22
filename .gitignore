@@ -84,5 +84,7 @@ build/
 *.swp
 
 # Images and zip
+# Ignore general images, but not pipeline.png
 *.png
+!pipeline.png
 *.zip
