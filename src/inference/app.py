@@ -32,6 +32,22 @@ app = Flask(__name__)
 model = torch.jit.load("./models/phish_model_ts.pt")
 model.eval()
 
+@app.route("/", methods = ["GET"])
+def home():
+    return (
+        "<h1>PhishGuard API</h1>"
+        "<p>POST <code>/predict</code> with JSON:</p>"
+        "<pre>{\"url\": \"https://example.com\"}</pre>"
+        "<hr>"
+        "<h2>Test quickly</h2>"
+        "<b>cURL:</b><br>"
+        "<pre>curl -X POST http://127.0.0.1:8000/predict -H \"Content-Type: application/json\" -d '{\"url\":\"https://paypal-secure-login.ru\"}'</pre>"
+        "<hr>"
+        "<b>Thunder Client (VS Code):</b><br>"
+        "Method: POST  URL: <code>http://127.0.0.1:8000/predict</code><br>"
+        "Body (JSON): <code>{\"url\": \"https://paypal-secure-login.ru\"}</code>"
+    ), 200
+
 @app.route("/predict", methods = ["POST"])
 def predict():
     """Processing POST requests and returning phishing score"""
@@ -52,7 +68,7 @@ def predict():
     
     except Exception as e:
         return jsonify({"error" : str(e)}), 500
-    
+
 if __name__ == "__main__":
     # Running flask server on port 5000
     # print(url_to_ids("http://secure-login-paypal.com.verify-account-update.co/login"))

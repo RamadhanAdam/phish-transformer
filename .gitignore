@@ -28,7 +28,6 @@ dist/
 models/*.pt
 *.pth
 *.bin
-
 *.onnx
 
 # Model directories
@@ -83,3 +82,7 @@ build/
 *.tmp
 *.bak
 *.swp
+
+# Images and zip
+*.png
+*.zip
