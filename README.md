@@ -172,7 +172,7 @@ python src/inference/evaluate.py   # produces roc.png
 ---
 ## Contributing
 1. Fork 
-2. Feature branch (`git checkout -b feat/awesome`)
+2. Feature branch (`git checkout -b feat/my-change`)
 3. Commit with clear messages
 4. Push & open pull requests
 
