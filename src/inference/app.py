@@ -32,9 +32,11 @@ app = Flask(__name__)
 model = torch.jit.load("./models/phish_model_ts.pt")
 model.eval()
 
+
 @app.route("/", methods=["GET"])
 def home():
-    return """
+    return (
+        """
 <!doctype html>
 <html lang="en">
 <meta charset="utf-8">
@@ -115,30 +117,34 @@ curl -X POST http://127.0.0.1:8000/predict \
 <p>That's it — happy testing!</p>
 
 </html>
-""", 200
+""",
+        200,
+    )
 
-@app.route("/predict", methods = ["POST"])
+
+@app.route("/predict", methods=["POST"])
 def predict():
     """Processing POST requests and returning phishing score"""
     try:
         # Getting URL from request JSON safely
-        data = request.get_json(force = True)
+        data = request.get_json(force=True)
         url = data.get("url")
 
         # Converting URL to token IDs
-        ids = torch.tensor([url_to_ids(url)], dtype= torch.long)
+        ids = torch.tensor([url_to_ids(url)], dtype=torch.long)
 
         #  Running model inference without gradients
         with torch.no_grad():
             score = float(model(ids)[0])
 
         # Returning phishing probability as JSON
-        return jsonify({"phishing" : score})
-    
+        return jsonify({"phishing": score})
+
     except Exception as e:
-        return jsonify({"error" : str(e)}), 500
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == "__main__":
     # Running flask server on port 5000
     # print(url_to_ids("http://secure-login-paypal.com.verify-account-update.co/login"))
-    app.run(port=5000, debug = False)
+    app.run(port=5000, debug=False)

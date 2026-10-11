@@ -7,6 +7,7 @@ import unittest
 import json
 from src.inference.app import app
 
+
 class APITestCase(unittest.TestCase):
     """
     Unit test for the phishing URL prediction API.
@@ -17,11 +18,13 @@ class APITestCase(unittest.TestCase):
         self.client = app.test_client()
 
     def test_predict(self):
-        """Ensuring prediction endpoint returns a phishing score""" 
+        """Ensuring prediction endpoint returns a phishing score"""
         response = self.client.post(
             "/predict",
-            json = {"url" : "www.dghjdgf.com/paypal.co.uk/cycgi-bin/webscrcmd=_home-customer&nav=1/loading.php"}
-        )       
+            json={
+                "url": "www.dghjdgf.com/paypal.co.uk/cycgi-bin/webscrcmd=_home-customer&nav=1/loading.php"
+            },
+        )
 
         self.assertEqual(response.status_code, 200)
         data = response.get_json()
@@ -30,8 +33,9 @@ class APITestCase(unittest.TestCase):
 
     def test_missing_url(self):
         """Ensuring API returns an error when 'url' is missing"""
-        response = self.client.post("/predict", json = {})
+        response = self.client.post("/predict", json={})
         self.assertNotEqual(response.status_code, 200)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -12,6 +12,7 @@ import torch.nn as nn
 
 class ByteEmbedding(nn.Module):
     """Simple embedding layer for byte tokens."""
+
     def __init__(self, vocab_size: int = 96, d_model: int = 32):
         super().__init__()
         self.emb = nn.Embedding(vocab_size, d_model)
@@ -23,6 +24,7 @@ class ByteEmbedding(nn.Module):
 
 class MultiHeadSelfAttention(nn.Module):
     """Multi-head self-attention (no mask needed)."""
+
     def __init__(self, d_model: int = 32, heads: int = 2):
         super().__init__()
         assert d_model % heads == 0
@@ -47,12 +49,15 @@ class MultiHeadSelfAttention(nn.Module):
 
 class MiniTransformer(nn.Module):
     """2-layer encoder + max-pool + sigmoid."""
-    def __init__(self,
-                 vocab_size: int = 96,
-                 d_model: int = 32,
-                 heads: int = 2,
-                 layers: int = 2,
-                 max_len: int = 75):
+
+    def __init__(
+        self,
+        vocab_size: int = 96,
+        d_model: int = 32,
+        heads: int = 2,
+        layers: int = 2,
+        max_len: int = 75,
+    ):
         super().__init__()
         self.embedding = ByteEmbedding(vocab_size, d_model)
         self.pos_enc = nn.Parameter(torch.randn(max_len, d_model))
@@ -61,7 +66,7 @@ class MiniTransformer(nn.Module):
             nhead=heads,
             dim_feedforward=64,
             dropout=0.1,
-            batch_first=True
+            batch_first=True,
         )
         self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=layers)
         self.pool = nn.AdaptiveMaxPool1d(1)
@@ -70,9 +75,11 @@ class MiniTransformer(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # x: (B, T)  long tensor
         x = self.embedding(x) + self.pos_enc  # (B,T,d)
-        x = self.encoder(x)                   # (B,T,d)
+        x = self.encoder(x)  # (B,T,d)
         z = self.pool(x.transpose(1, 2)).squeeze(-1)  # (B,d)
-        return 1 - torch.sigmoid(self.fc(z)).squeeze(-1)   # (B,) -> flipped to represent phishing probability well 
+        return 1 - torch.sigmoid(self.fc(z)).squeeze(
+            -1
+        )  # (B,) -> flipped to represent phishing probability well
 
 
 if __name__ == "__main__":

@@ -21,6 +21,7 @@ sys.path.insert(0, str(project_root / "src"))
 
 from model.model import MiniTransformer
 
+
 def export():
     """
     Exporting the trained MiniTransformer to TorchScript.
@@ -56,6 +57,7 @@ def export():
     # Printing the model file size
     size_kb = len(scripted.save_to_buffer()) / 1024
     print(f"Exported TorchScript model to '{output_path}' | size: {size_kb:.1f} KB")
+
 
 if __name__ == "__main__":
     export()
